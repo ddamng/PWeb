@@ -1,0 +1,30 @@
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 610px;
+  margin: auto;
+  background: rgb(0, 60, 255);
+  padding: 10px;
+}
+
+.gallery-grid img {
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.gallery-grid-bgs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 500px;
+  margin: auto;
+  background: rgb(0, 60, 255);
+  padding: 5px 1px 5px 1px;
+}
+
+.gallery-grid-bgs img {
+  width: 125px;
+  height: 60px;
+  margin: auto;
+  border: 1px solid black;
+}

@@ -1,0 +1,10 @@
+var panjang, lebar, luas;
+panjang = prompt("Masukkan panjang:");
+lebar = prompt("Masukkan lebar:");
+luas = panjang*lebar;
+document.write("<table border='1'>");
+document.write("<th>Variabel</th> <th>Data Masukan</th> <th>Keluaran</th>");
+document.write("<tr><td>Panjang: </td><td>  " + panjang + "</td><td> </td></tr>");
+document.write("<tr><td>Lebar: </td><td> " + lebar + "</td><td> </td></tr>");
+document.write("<tr><td>Luas: </td><td> Panjang*Lebar </td><td>" + luas + "</td></tr>");
+document.write("</table>");

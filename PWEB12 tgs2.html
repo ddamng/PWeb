@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Menghitung Indeks Prestasi</title>
+<style>
+  table {
+    width: 50%;
+    margin: 20px auto;
+  }
+  td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  input[type="text"] {
+    width: 90%;
+  }
+  .center {
+    text-align: center;
+  }
+  button {
+    margin: 5px;
+  }
+</style>
+<script>
+
+function validasiNilai(nilai) {
+    if(nilai === "") {
+      alert("Harap isi semua nilai");
+      return false;
+    }
+    let num = Number(nilai);
+    if(isNaN(num) || num < 0 || num > 100) {
+      alert("Nilai harus berupa angka antara 0 sampai 100");
+      return false;
+    }
+    return true;
+  }
+
+  function hitungIndeks() {
+
+    let quiz = document.getElementById('quiz').value.trim();
+    let tugas = document.getElementById('tugas').value.trim();
+    let uts = document.getElementById('uts').value.trim();
+    let uas = document.getElementById('uas').value.trim();
+
+    if(!validasiNilai(quiz) || !validasiNilai(tugas) || !validasiNilai(uts) || !validasiNilai(uas)) {
+      return;
+    }
+
+    let nilaiAkhir = (Number(quiz) * 0.10) +
+                     (Number(tugas) * 0.20) +
+                     (Number(uts) * 0.30) +
+                     (Number(uas) * 0.40);
+
+    nilaiAkhir = Math.round(nilaiAkhir * 100) / 100;
+
+    let indeks = "";
+    let keterangan = "";
+
+    if(nilaiAkhir > 80 && nilaiAkhir <= 100) {
+      indeks = "A";
+      keterangan = "Lulus dengan sangat baik";
+    } else if(nilaiAkhir > 68 && nilaiAkhir <= 80) {
+      indeks = "B";
+      keterangan = "Lulus dengan baik";
+    } else if(nilaiAkhir > 55 && nilaiAkhir <= 68) {
+      indeks = "C";
+      keterangan = "Lulus dengan cukup";
+    } else if(nilaiAkhir > 38 && nilaiAkhir <= 55) {
+      indeks = "D";
+      keterangan = "Lulus dengan kurang";
+    } else if(nilaiAkhir >= 0 && nilaiAkhir <= 38) {
+      indeks = "E";
+      keterangan = "Tidak Lulus";
+    } else {
+      alert("Nilai akhir tidak valid");
+      return;
+    }
+
+    document.getElementById('nilaiAkhir').value = nilaiAkhir;
+    document.getElementById('indeks').value = indeks;
+    document.getElementById('keterangan').value = keterangan;
+  }
+
+  function ulang() {dan
+    document.getElementById('formNilai').reset();
+    document.getElementById('nilaiAkhir').value = "";
+    document.getElementById('indeks').value = "";
+    document.getElementById('keterangan').value = "";
+  }
+</script>
+</head>
+<body>
+
+<table align="center">
+  <tr>
+    <td rowspan="2" class="center" style="width: 100px;">
+      <img src="LOGO IGASAR.png" alt="Logo Pindad" width="80" />
+    </td>
+    <td class="center" colspan="7" style="font-weight: bold; font-size: 18px;">
+      Menghitung Indeks Prestasi
+    </td>
+  </tr>
+  <tr>
+    <td class="center" colspan="7" style="font-weight: bold; font-size: 14px;">
+      Peserta didik SMK Igasar Pindad Bandung
+    </td>
+  </tr>
+  <tr>
+    <td>Quiz (10%) :</td>
+    <td><input type="text" id="quiz" name="quiz" maxlength="3"></td>
+    <td>Tugas (20%) :</td>
+    <td><input type="text" id="tugas" name="tugas" maxlength="3"></td>
+    <td>UTS (30%) :</td>
+    <td><input type="text" id="uts" name="uts" maxlength="3"></td>
+    <td>UAS (40%) :</td>
+    <td><input type="text" id="uas" name="uas" maxlength="3"></td>
+  </tr>
+  <tr>
+    <td colspan="8" class="center">
+      <button type="button" onclick="hitungIndeks()">Hitung</button>
+      <button type="button" onclick="ulang()">Ulang</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Nilai Akhir :</td>
+    <td><input type="text" id="nilaiAkhir" readonly></td>
+    <td>Indeks Prestasi :</td>
+    <td><input type="text" id="indeks" readonly></td>
+    <td>Keterangan :</td>
+    <td colspan="3"><input type="text" id="keterangan" readonly></td>
+  </tr>
+</table>
+
+</body>
+</html>
